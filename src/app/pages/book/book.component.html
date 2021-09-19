@@ -1,0 +1,134 @@
+<app-header-nav (actionEvent)="action($event)"></app-header-nav>
+
+<div class="container_center mt-4">
+  <h2>Books</h2>
+  <form [formGroup]="bookAddForm" *ngIf="isAdd">
+    <div class="col-12">
+      <div class="form-group col-md-12">
+        <label>Title:</label>
+        <input type="text" formControlName="title" class="form-control" placeholder="Title">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Description:</label>
+        <input type="text" formControlName="description" class="form-control" placeholder="Description">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Page Count:</label>
+        <input type="number" formControlName="pageCount" class="form-control" placeholder="Page Count">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Excerpt:</label>
+        <input type="text" formControlName="excerpt" class="form-control" placeholder="Excerpt">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Publish Date:</label>
+        <input type="datetime-local" formControlName="publishDate" class="form-control" placeholder="Publish Date">
+      </div>
+
+      <div class="col-12 mb-3">
+        <div>
+          <label>Select an author</label>
+        </div>
+        <select class="btn btn-secondary" (change)="updateAuthortId($event.target.value)" formControlName="authorId">
+          <option value={{item.id}} *ngFor="let item of authors">
+            {{item.firstName}} {{item.lastName}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+  </form>
+
+  <div *ngIf="isAdd">
+    <button type="submit" class="btn btn-primary" [disabled]="!bookAddForm.valid" (click)="newAuthor()">
+      <fa-icon [icon]="faSave"></fa-icon> Guardar
+    </button>
+    <button type="submit" class="btn btn-danger ml-4" (click)="clear()">
+      <fa-icon [icon]="faUndo"></fa-icon> Cancelar
+    </button>
+  </div>
+
+
+  <form [formGroup]="bookAddForm" *ngIf="isUpdate">
+    <div class="col-12">
+
+      <div class="col-12 mb-3">
+        <div>
+          <label>Select a book</label>
+        </div>
+        <select class="btn btn-secondary" (change)="updateBooktId($event.target.value)">
+          <option value={{item.id}} *ngFor="let item of books">
+            {{item.title}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-12">
+        <label>Title:</label>
+        <input type="text" formControlName="title" class="form-control" placeholder="Title">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Description:</label>
+        <input type="text" formControlName="description" class="form-control" placeholder="Description">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Page Count:</label>
+        <input type="number" formControlName="pageCount" class="form-control" placeholder="Page Count">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Excerpt:</label>
+        <input type="text" formControlName="excerpt" class="form-control" placeholder="Excerpt">
+      </div>
+      <div class="form-group col-md-12">
+        <label>Publish Date:</label>
+        <input type="datetime-local" formControlName="publishDate" class="form-control" placeholder="Publish Date">
+      </div>
+
+      <div class="col-12 mb-3">
+        <div>
+          <label>Select an author</label>
+        </div>
+        <select class="btn btn-secondary" (change)="updateAuthortId($event.target.value)" formControlName="authorId">
+          <option value={{item.id}} *ngFor="let item of authors">
+            {{item.firstName}} {{item.lastName}}
+          </option>
+        </select>
+      </div>
+
+    </div>
+  </form>
+
+  <div *ngIf="isUpdate">
+    <button type="submit" class="btn btn-primary" [disabled]="!bookAddForm.valid" (click)="updateBook()">
+      <fa-icon [icon]="faSave"></fa-icon> Guardar
+    </button>
+    <button type="submit" class="btn btn-danger ml-4" (click)="clear()">
+      <fa-icon [icon]="faUndo"></fa-icon> Cancelar
+    </button>
+  </div>
+
+  <form [formGroup]="bookAddForm" *ngIf="isDelete">
+
+    <div class="col-12 mb-3">
+      <div>
+        <label>Select an book</label>
+      </div>
+      <select class="btn btn-secondary" (change)="updateBooktId($event.target.value)">
+        <option value={{item.id}} *ngFor="let item of books">
+          {{item.title}}
+        </option>
+      </select>
+    </div>
+
+  </form>
+
+  <div *ngIf="isDelete">
+    <button type="submit" class="btn btn-primary" [disabled]="!bookAddForm.valid" (click)="deleteBook()">
+      <fa-icon [icon]="faSave"></fa-icon> Delete
+    </button>
+    <button type="submit" class="btn btn-danger ml-4" (click)="clear()">
+      <fa-icon [icon]="faUndo"></fa-icon> Cancelar
+    </button>
+  </div>
+
+</div>

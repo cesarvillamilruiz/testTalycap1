@@ -1,0 +1,21 @@
+<div class="container">
+  <table class="table table-striped mt-5">
+    <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Option</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users | slice: (page-1) * pageSize : page * pageSize; let i = index">
+        <td hidden>{{ user.id}}</td>
+        <td>{{ user.user}}</td>
+        <td><button class="btn btn-outline-danger" (click)="deleUser(user.id)"><fa-icon [icon]="faTrash"></fa-icon></button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="users.length">
+  </ngb-pagination>
+
+</div>

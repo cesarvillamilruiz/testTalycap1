@@ -1,0 +1,11 @@
+<div class="container">
+  <ul class="nav justify-content-center pt-5">
+    <a class="nav-link" [routerLink]="['/modules/authors']">Author {{action}}</a> |
+    <a class="nav-link" [routerLink]="['/modules/books']">Books</a> |
+    <a class="nav-link" [routerLink]="['/modules/author-book']">Authors with books</a>
+  </ul>
+
+  <router-outlet></router-outlet>
+</div>
+
+

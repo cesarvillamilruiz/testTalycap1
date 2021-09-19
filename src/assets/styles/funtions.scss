@@ -1,0 +1,15 @@
+//VARIALBES
+$firt_color: rgba(1, 1, 1);
+$second_color: rgba(215, 215, 215);
+
+@mixin displayFlex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+.container_center {
+  font-family: Josefin Sans;
+  @include displayFlex(column, center, center);
+}
